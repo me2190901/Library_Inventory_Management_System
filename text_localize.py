@@ -165,9 +165,9 @@ def text_detection(image,net):
 	results = get_bounding_boxes(orig, boxes, rW, rH, padding, origW, origH)
     
 	proc_img = draw_bounding_boxes(orig, results)
-	cv2.imshow("boxes",proc_img)
-	cv2.imwrite("boxed.jpg",proc_img)
-	cv2.waitKey()
+	# cv2.imshow("boxes",proc_img)
+	# cv2.imwrite("boxed.jpg",proc_img)
+	# cv2.waitKey()
 	return results
 
 def text_detection_spines(img_paths):
