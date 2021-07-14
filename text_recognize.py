@@ -167,8 +167,8 @@ def text_detection(image,net, debug=False):
     proc_img = draw_bounding_boxes(orig, results)
 
     if(debug==True):
-        cv2.imshow("boxes",proc_img)
-        cv2.imwrite("boxed.jpg",proc_img)
+        cv2.imshow("boxed",proc_img)
+        # cv2.imwrite("boxed.jpg",proc_img)
         cv2.waitKey()
     return results
 
