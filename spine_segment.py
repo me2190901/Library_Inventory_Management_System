@@ -370,6 +370,7 @@ def rotate_image(image):
 
 def get_book_lines(img_path, debug = False):
     image = cv2.imread(img_path)
+    image=cv2.resize(image,(720,960))
     image=rotate_image(image)
     # edged = canny_edge(gray, 50, 150, debug = debug)
     lines1,img1=method_A(image)
@@ -392,7 +393,7 @@ def get_book_lines(img_path, debug = False):
     l=img_path.strip().split("/")
     str1=l[-1]
     print("-----------------Opening :"+str1+"--------------------")
-    str1=str1[7:-4]
+    str1=str1[:-4]
     
     i = 0
     for img_s in img_segmentation:
