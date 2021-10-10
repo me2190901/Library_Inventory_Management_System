@@ -173,7 +173,8 @@ img_height = 450
 # --------------Hough Transfrom--------
 def pre_process(img):
     img_resized = cv2.resize(img, (img_width, img_height))
-    img_blur = cv2.GaussianBlur(img_resized, (3, 3), 0)
+    img_gray=cv2.cvtColor(img_resized, cv2.COLOR_BGR2GRAY)
+    img_blur = cv2.GaussianBlur(img_gray, (3, 3), 0)
     return img_resized, img_blur
 
 
@@ -200,7 +201,7 @@ def draw_vertical(img, lines):
         x2 = 0
         y1 = 0
         y2 = img_width
-        print(x1,x2,y1,y2)
+        # print(x1,x2,y1,y2)
         cv2.line(new_img, (x1, y1), (x2, y2), (0, 255, 255), 2)
     return new_img
 
@@ -236,12 +237,13 @@ def line_sifting(lines_list):
 def method_B(image,debug=False):
     
     #resize image
-    r = 1024.0 / image.shape[1]
-    dim = (1024, int(image.shape[0] * r))
- 
+    # r = 1024.0 / image.shape[1]
+    # dim = (1024, int(image.shape[0] * r))
+    # dim=(960,720)
     # perform the actual resizing of the image and show it
-    image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
-    
+    # image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+    img=image.copy()
+    image = cv2.GaussianBlur(image, (3, 3), 0)
     # print(image.shape)
     
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -253,8 +255,10 @@ def method_B(image,debug=False):
 
     points = apply_hough_transform(proc_img, image, 130)
     
-    lines, proc_img= merge_lines2(points, image)
-    
+    lines, proc_img= merge_lines2(points, img)
+    # cv2.imshow("adarsh",proc_img)
+    cv2.waitKey()
+    # print(lines)
     return lines, proc_img
 
 def method_A(image):
@@ -270,6 +274,8 @@ def method_A(image):
     lines1 = lines[:, 0, :]
     houghlines = line_sifting(lines1)
     img_show = draw(img_gray, houghlines)
+    # cv2.imshow("pavel",img_show)
+    cv2.waitKey()
     # print("pavel",len(houghlines))
     
     return houghlines,img_show
@@ -306,6 +312,7 @@ def segmentation(img, lines,method):
 
 def rotate_image(image):
     # cv2.imshow("original",image)
+    image=cv2.resize(image,(960,720))
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     
     edged = canny_edge(gray, 50, 150)
@@ -370,8 +377,24 @@ def rotate_image(image):
 
 def get_book_lines(img_path, debug = False):
     image = cv2.imread(img_path)
-    image=cv2.resize(image,(720,960))
+    
+    # img=image.copy()
+    # image = cv2.GaussianBlur(image, (3, 3), 0)
+    # w,h,c = img.shape
+    # print(w,h,c)
+
+    # new_w = int(w*1.5)
+    # new_h = int(h*1.5)
+
+    # img = cv2.resize(img, (new_w, new_h))
+
+    # image = cv2.copyMakeBorder( img, int((1080-new_h)/2), int((1080-new_h)/2), int((1920-new_w)/2), int((1920-new_h)/2), 0)
+    # cv2.imshow("output",image)
+    # cv2.waitKey()
     image=rotate_image(image)
+    # print(image.shape)
+    
+
     # edged = canny_edge(gray, 50, 150, debug = debug)
     lines1,img1=method_A(image)
     lines2,img2=method_B(image)
@@ -386,28 +409,29 @@ def get_book_lines(img_path, debug = False):
         image=img2
         lines=lines2
         method="B"
+    # print(lines1)
 
-    
     img_segmentation = segmentation(image,lines,method)
-
-    l=img_path.strip().split("/")
-    str1=l[-1]
-    print("-----------------Opening :"+str1+"--------------------")
-    str1=str1[:-4]
-    
-    i = 0
-    for img_s in img_segmentation:
-        # cv2.imshow("error",img_s)
-        if img_s.shape[0] == 0:
-            print(i)
-        # print(str1)
-        string = os.path.join("./results",str1+"_"+str(i)+'.jpg')
-        print("Write " + string)
-        if not cv2.imwrite(string, img_s):
-            raise Exception("Could not write image")
+    if(debug):
+        l=img_path.strip().split("/")
+        str1=l[-1]
+        print("-----------------Opening :"+str1+"--------------------")
+        str1=str1[:-4]
         
-        i = i+1
-    print("Results Succesfully Saved")
+        i = 0
+        for img_s in img_segmentation:
+            # cv2.imshow("error",img_s)
+            if img_s.shape[0] == 0:
+                print(i)
+            # print(str1)
+            string = os.path.join("./results",str1+"_"+str(i)+'.jpg')
+            print("Write " + string)
+            if not cv2.imwrite(string, img_s):
+                raise Exception("Could not write image")
+            
+            i = i+1
+    return img_segmentation
+    # print("Results Succesfully Saved")
     # cv2.imshow("result",image)
     # cv2.waitKey()
     
@@ -415,4 +439,4 @@ def get_book_lines(img_path, debug = False):
 
     
 
-# get_book_lines("./images/3.jpg")
+# get_book_lines("./images/21.jpg")

@@ -2,7 +2,7 @@ import text_recognize as tr
 import glob as gb
 import cv2
 
-img_path = gb.glob("./results/\\1_*.jpg")
+img_path = gb.glob("./results/\\21_*.jpg")
 # print(img_path)
 # img_list=[]
 for path in img_path:

@@ -6,11 +6,23 @@ import numpy as np
 import time
 import cv2
 from crnn import demo
+from spellchecker import SpellChecker
+spell = SpellChecker()
+
+# f = open("recognized.txt", "a+")
+
+def listToString(s): 
+    
+    # initialize an empty string
+    str1 = " " 
+    
+    # return string  
+    return (str1.join(s))
 
 def get_bounding_boxes(orig_image, boxes, rW, rH, padding, origW, origH,debug=False):
-    results = []
+    # results = []
     orig_image = cv2.cvtColor(orig_image, cv2.COLOR_BGR2RGB)
-
+    texts=[]
     # loop over the bounding boxes
     for (startX, startY, endX, endY) in boxes:
         startX = int(startX * rW)
@@ -40,13 +52,21 @@ def get_bounding_boxes(orig_image, boxes, rW, rH, padding, origW, origH,debug=Fa
             roi = imutils.rotate_bound(roi, 90)
         roi = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB)
         text = demo.text_recognize(roi)
-        if(debug):
-            print(text)
-        results.append(((startX, startY, endX, endY),text))
-
-    results = sorted(results, key=lambda r:r[0][1])
+        corrected = spell.unknown([text])
+        for word in corrected:
+            text=spell.correction(word)
+        if(len(text)>0):
+            texts.append(text)
+        # results.append(((startX, startY, endX, endY),text))
+    if(debug):
+        print(*texts)
+    tex=listToString(texts)
+    tex=tex.strip()
+    # if(len(tex)>0):
+    #     f.write(tex+"\n")
+    # results = sorted(results, key=lambda r:r[0][1])
     # print(results)
-    return results
+    return tex
 
 
 def decode_predictions(scores, geometry, min_confidence):
@@ -164,9 +184,10 @@ def text_detection(image,net, debug=False):
 
     results = get_bounding_boxes(orig, boxes, rW, rH, padding, origW, origH, debug)
 
-    proc_img = draw_bounding_boxes(orig, results)
+    
 
     if(debug==True):
+        proc_img = draw_bounding_boxes(orig, results)
         cv2.imshow("boxed",proc_img)
         # cv2.imwrite("boxed.jpg",proc_img)
         cv2.waitKey()
@@ -176,7 +197,8 @@ def text_detection_spines(spine_image, debug=False):
     net = cv2.dnn.readNet("frozen_east_text_detection.pb")
     # for spine_image in spine_images:
     image= imutils.rotate_bound(spine_image,-90)
-    result= text_detection(image,net,debug)
+    tex= text_detection(image,net,debug)
+    return tex
 
 # image=cv2.imread("./results/1_2.jpg")
 # img_list=[]
