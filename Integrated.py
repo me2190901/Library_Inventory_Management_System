@@ -23,7 +23,7 @@ for img_s in img_segmentation:
                 dic[i]=0
             else:
                 dic[i]=dic[i]+len(word)
-    print(dic)
+    # print(dic)
     try:
         maxtitle = max(zip(dic.values(), dic.keys()))[1]
         print("Pridicted : ",maxtitle)
