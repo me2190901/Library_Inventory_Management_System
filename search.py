@@ -1,27 +1,26 @@
 import pandas as pd
 
-df=pd.read_excel(".\data.xlsx")
+df=pd.read_csv(".\data1.csv")
 
 df.drop_duplicates(subset ="Title",
                      keep = False, inplace = True)
-dic={}
 
-fl=open("recognized.txt",'r')
-data = fl.readlines()
-for lines in data:
-    dic={}
-    line=lines.strip().split()
-    for word in line:
-        a=df[df['Title'].str.contains(word)][['Title']]
+# df.set_index('Title')
 
 
-        for i in a["Title"]:
-            if i not in dic:
-                dic[i]=0
-            dic[i]=dic[i]+len(word)
-    # print(dic)
-    try:
-        maxtitle = max(zip(dic.values(), dic.keys()))[1]
-        print(maxtitle)
-    except:
-        print("No Title Found")
+
+word="Materials for architectural design"
+a=df[df['Title'].str.contains(word,case=False)][['Title']]
+df.index.name="SNo"
+# print(df.index.name)
+for i in a["Title"]:
+    print(i)
+    b=df.index[df["Title"]==i]
+    b=b.tolist()
+    ind=b[0]
+    df.iat[ind,1]=df.iat[ind,1]+1
+# print(ind)
+print(df)
+
+
+df.to_csv("data1.csv", index=False)
