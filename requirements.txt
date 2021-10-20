@@ -1,0 +1,10 @@
+python --version = 3.9.5
+pip3 install torch==1.9.1+cu102 torchvision==0.10.1+cu102 torchaudio===0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
+pip3 install opencv-python
+pip3 install imutils
+pip3 install matplotlib
+pip3 install scikit-image
+pip3 install lmdb
+pip3 install pyspellchecker
+pip3 install pandas
+pip3 install openpyxl
