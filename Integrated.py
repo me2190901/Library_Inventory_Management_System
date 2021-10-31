@@ -35,6 +35,10 @@ def prediction(loc,debug=False):
             b=b.tolist()
             ind=b[0]
             df.iat[ind,1]=df.iat[ind,1]+1
+            if(df.iat[ind,2]-df.iat[ind,1]-df.iat[ind,3]>0):
+                df.iat[ind,4]=df.iat[ind,2]-df.iat[ind,1]-df.iat[ind,3]
+            else:
+                df.iat[ind,4]=0
             if(maxtitle in total):
                 total[maxtitle]=total[maxtitle]+1
             else:
@@ -74,6 +78,10 @@ def search(line,number,debug=False):
         b=b.tolist()
         ind=b[0]
         df.iat[ind,1]=df.iat[ind,1]+number
+        if(df.iat[ind,2]-df.iat[ind,1]-df.iat[ind,3]>0):
+                df.iat[ind,4]=df.iat[ind,2]-df.iat[ind,1]-df.iat[ind,3]
+        else:
+            df.iat[ind,4]=0
         if(not debug):
             df.to_csv("data1.csv", index=False)
         # l.append([maxtitle,df.iat[ind,1]])

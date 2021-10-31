@@ -1,54 +1,54 @@
-Title,Checked
-Smart materials and technologies,0
-Advanced building construction materials handbook,0
-Materials Science in Construction,0
-Materials for architectural design,0
-biopolymers and biotech admixtures for Eco-Efficient Construction Materials,0
-Architecture Principal,0
-Civil Engineering materials,0
-Construction and building design materials and techniques,0
-construction materials,0
-material imagination in architecture,0
-eco-efficient materials for mitigating building cooling needs,0
-basic architecture,0
-Matroid applications white,0
-graph colouring and the probabilistic methods molloy reed,0
-graph theory intech,0
-novak & cibbons hybrid graph theory and network analysis,0
-oxley matroid theory second edition,0
-penrose random geometric graphs,0
-perfect graphs,0
-petri nets,0
-"an introduction to grids, graphs, and networks Pozrik",0
-Pseudo-matroids and cuts of matroids Gizunov ,0
-chandrasekhar ramaswamy some recent,0
-"graph separators, with applications",0
-The reconstruction of trees from their automorphism groups,0
-spencer the strange logic of random,0
-efficient graph representation,0
-inequalities for graph eigenvalues,0
-zoran stanic regular graphs,0
-Introduction to information theory Reza,0
-"Signals and systems Roberts, M.J.",0
-Topological Signal processing Robinson,0
-"Satellite communications Roddy, D",0
-Information and communication theory,0
-"Information and communication theory Rosie, A.M.",0
-Handbook of line commu-nications,0
-moduletion & coding in Information systems russell,0
-Trends in communications satellites curtin,0
-Cellular communications A comprehensive and practical guide ,0
-optimization of digital transmission systems ,0
-Engineering cyber tsien,0
-data transmission ,0
-ultra-low energy wireless sensor networks in practice ,0
-ultra wideband system aiello,0
-understanding digital humanity david m. berry,0
-"information theory van, C.A.",0
-vehicular communications and networks ,0
-"provisioning, recovery, and in-operations in elastic optical networks ",0
-wavelength converters in optical networks ,0
-principles of digital communication and coding ,0
-IEEE 802 wireless systems ,0
-bang wang coverage control in sensor networks ,0
-wireless communication,0
+Title,Checked,Previous,Issued,Missing
+Smart materials and technologies,2,8,1,5
+Advanced building construction materials handbook,3,8,2,3
+Materials Science in Construction,6,8,2,0
+Materials for architectural design,3,8,2,3
+biopolymers and biotech admixtures for Eco-Efficient Construction Materials,3,8,2,3
+Architecture Principal,0,8,2,6
+Civil Engineering materials,3,8,2,3
+Construction and building design materials and techniques,3,8,2,3
+construction materials,3,8,2,3
+material imagination in architecture,3,8,2,3
+eco-efficient materials for mitigating building cooling needs,3,8,2,3
+basic architecture,2,8,2,4
+Matroid applications white,0,8,2,6
+graph colouring and the probabilistic methods molloy reed,0,8,2,6
+graph theory intech,0,8,2,6
+novak & cibbons hybrid graph theory and network analysis,0,8,2,6
+oxley matroid theory second edition,0,8,2,6
+penrose random geometric graphs,0,8,2,6
+perfect graphs,0,8,2,6
+petri nets,0,8,2,6
+"an introduction to grids, graphs, and networks Pozrik",0,8,2,6
+Pseudo-matroids and cuts of matroids Gizunov ,0,8,2,6
+chandrasekhar ramaswamy some recent,0,8,2,6
+"graph separators, with applications",0,8,2,6
+The reconstruction of trees from their automorphism groups,0,8,2,6
+spencer the strange logic of random,0,8,2,6
+efficient graph representation,0,8,2,6
+inequalities for graph eigenvalues,0,8,2,6
+zoran stanic regular graphs,0,8,2,6
+Introduction to information theory Reza,0,8,2,6
+"Signals and systems Roberts, M.J.",0,8,2,6
+Topological Signal processing Robinson,0,8,2,6
+"Satellite communications Roddy, D",0,8,2,6
+Information and communication theory,0,8,2,6
+"Information and communication theory Rosie, A.M.",0,8,2,6
+Handbook of line commu-nications,0,8,2,6
+moduletion & coding in Information systems russell,0,8,2,6
+Trends in communications satellites curtin,0,8,2,6
+Cellular communications A comprehensive and practical guide ,0,8,2,6
+optimization of digital transmission systems ,0,8,2,6
+Engineering cyber tsien,0,8,2,6
+data transmission ,0,8,2,6
+ultra-low energy wireless sensor networks in practice ,0,8,2,6
+ultra wideband system aiello,0,8,2,6
+understanding digital humanity david m. berry,0,8,2,6
+"information theory van, C.A.",0,8,2,6
+vehicular communications and networks ,0,8,2,6
+"provisioning, recovery, and in-operations in elastic optical networks ",0,8,2,6
+wavelength converters in optical networks ,0,8,2,6
+principles of digital communication and coding ,0,8,2,6
+IEEE 802 wireless systems ,0,8,2,6
+bang wang coverage control in sensor networks ,0,8,2,6
+wireless communication,0,8,2,6
